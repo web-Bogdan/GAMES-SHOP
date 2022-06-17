@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/web-Bogdan.github.io/s/static/css/main.8f1dc781.css",
+    "main.js": "/web-Bogdan.github.io/s/static/js/main.c441ea6e.js",
+    "static/media/logo.png": "/web-Bogdan.github.io/s/static/media/logo.7322abf45ca3ad3d22c9.png",
+    "static/media/loadingSlider.webp": "/web-Bogdan.github.io/s/static/media/loadingSlider.8ea19374ad9bdf146d94.webp",
+    "static/media/logout.svg": "/web-Bogdan.github.io/s/static/media/logout.4f9ed3ece0a6fcd69299545752b8fb02.svg",
+    "index.html": "/web-Bogdan.github.io/s/index.html",
+    "static/media/plus.svg": "/web-Bogdan.github.io/s/static/media/plus.c95ad271228e93f8e1a4c4aed75ee6c2.svg",
+    "static/media/minus.svg": "/web-Bogdan.github.io/s/static/media/minus.26e315d2d861343ec58bc71978b2da59.svg",
+    "static/media/cart.svg": "/web-Bogdan.github.io/s/static/media/cart.808632216e9d849ddc3348fc7eee23ab.svg",
+    "static/media/basket.svg": "/web-Bogdan.github.io/s/static/media/basket.f6121eb5dceabda5608478cec5b84f88.svg",
+    "main.8f1dc781.css.map": "/web-Bogdan.github.io/s/static/css/main.8f1dc781.css.map",
+    "main.c441ea6e.js.map": "/web-Bogdan.github.io/s/static/js/main.c441ea6e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8f1dc781.css",
+    "static/js/main.c441ea6e.js"
+  ]
+}
