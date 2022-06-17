@@ -1,0 +1,65 @@
+@import "variables";
+
+// Auth page styles
+.auth{
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  .auth__title{
+    font-weight: 900;
+    font-size: 33px;
+    position: relative;
+    line-height: 45px;
+    margin-bottom: 35px;
+    color: black;
+    &::before{
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      background-color: $green;
+      height: 4px;
+      border-radius: 4px;
+      width: 120px;
+    }
+  }
+  .auth__form{
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 32px;
+    background-color: rgba(255, 255, 255, 0.49);
+    border: 1px solid rgba(255, 255, 255, 0.79);
+    border-radius: 10px;
+    width: 420px;
+  }
+  .auth__input{
+    background-color: rgba(255, 255, 255, 0.59);
+    border-radius: 22px;
+    font-size: 14px;
+    padding: 0 17px;
+    outline: none;
+    border: none;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 9px;
+    font-weight: 700;
+    &:focus{
+      backdrop-filter: brightness(125%);
+    }
+  }
+  .auth__text{
+    margin-top: 20px;
+    color: $white;
+    font-weight: 500;
+  }
+  .auth__error{
+    margin-bottom: 5px;
+    color: #fa4242;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

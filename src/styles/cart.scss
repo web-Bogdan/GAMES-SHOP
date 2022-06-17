@@ -1,0 +1,40 @@
+@import "variables";
+
+// Cart page styles
+.cart{
+  position: relative;
+  min-height: 100vh;
+  .cart__games .game{
+    height: 220px;
+    margin-bottom: 20px;
+  }
+  .cart__games .game__left{
+    width: 40%;
+  }
+  .cart__games .game__right{
+    width: 60%;
+  }
+  .cart__games .game__btn{
+    display: none;
+  }
+  .cart__games .game__footer{
+    justify-content: center;
+  }
+  .cart__text{
+    font-size: 24px;
+    color: #c08f35;
+    text-align: center;
+  }
+  .cart__buy{
+    display: flex;
+    justify-content: end;
+    padding-bottom: 160px;
+  }
+  .cart__btn{
+    background-color: #7e2f2f;
+    margin-right: 14px;
+    &:hover{
+      background-color: #f82828;
+    }
+  }
+}

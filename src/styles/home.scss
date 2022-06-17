@@ -1,0 +1,14 @@
+@import "variables";
+
+// Auth home styles
+.home{
+  position: relative;
+  min-height: 100vh;
+  .home__title{
+    margin-top: 60px;
+  }
+  .home__games{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  }
+}
