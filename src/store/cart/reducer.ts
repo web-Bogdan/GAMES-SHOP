@@ -12,8 +12,8 @@ const initialState: IInitialState = {
 
 export enum ACTIONS {
     ADD_TO_CART = "ADD_TO_CART",
-    INCREMENT_COUNT = "INCREMENT_COUNT",
-    DECREMENT_COUNT = "DECREMENT_COUNT",
+    INCREMENT_CART_COUNT = "INCREMENT_CART_COUNT",
+    DECREMENT_CART_COUNT = "DECREMENT_CART_COUNT",
     CLEAR_CART = "CLEAR_CART"
 }
 
@@ -22,13 +22,13 @@ interface ADD_TO_CART {
     payload: IGame
 }
 
-export interface INCREMENT_COUNT {
-    type: ACTIONS.INCREMENT_COUNT,
+export interface INCREMENT_CART_COUNT {
+    type: ACTIONS.INCREMENT_CART_COUNT,
     payload: string
 }
 
-export interface DECREMENT_COUNT {
-    type: ACTIONS.DECREMENT_COUNT,
+export interface DECREMENT_CART_COUNT {
+    type: ACTIONS.DECREMENT_CART_COUNT,
     payload: string
 }
 
@@ -36,7 +36,7 @@ interface CLEAR_CART {
     type: ACTIONS.CLEAR_CART
 }
 
-type TAction = ADD_TO_CART | INCREMENT_COUNT | DECREMENT_COUNT | CLEAR_CART;
+type TAction = ADD_TO_CART | INCREMENT_CART_COUNT | DECREMENT_CART_COUNT | CLEAR_CART;
 
 const cartReducer = (state = initialState, action: TAction) => {
     switch (action.type) {
@@ -54,7 +54,7 @@ const cartReducer = (state = initialState, action: TAction) => {
                 });
             }
             return {...state, cartList: newCartList}
-        case ACTIONS.INCREMENT_COUNT:
+        case ACTIONS.INCREMENT_CART_COUNT:
             const incrementCount = state.cartList.map(game => {
                 if (game._id === action.payload){
                     game = {...game, count: game.count + 1, price: game.price + game.price / game.count};
@@ -62,7 +62,7 @@ const cartReducer = (state = initialState, action: TAction) => {
                 return game;
             });
             return {...state, cartList: incrementCount};
-        case ACTIONS.DECREMENT_COUNT:
+        case ACTIONS.DECREMENT_CART_COUNT:
             const decrementCount = state.cartList.map(game => {
                 if (game._id === action.payload){
                     game = {...game, count: game.count - 1, price: game.price - game.price / game.count};

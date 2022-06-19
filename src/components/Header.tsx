@@ -5,10 +5,10 @@ import Logo from "../assets/img/logo.png";
 import {ReactComponent as Basket} from "../assets/img/icons/basket.svg";
 import {ReactComponent as LogOut} from "../assets/img/icons/logout.svg";
 import {logOut} from "../store/user/actions";
-import "../styles/app.scss";
 import {clearingCart} from "../store/cart/action";
+import "../styles/app.scss";
 
-const Header = () => {
+const Header: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const logOutHandle = () => {

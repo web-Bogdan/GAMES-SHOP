@@ -7,9 +7,9 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {setError, setGames, startLoading} from "../store/games/actions";
 import {GAMES_API_URL} from "../utils/consts/consts";
 import Footer from "../components/Footer";
-import "../styles/cart.scss";
 import {Link} from "react-router-dom";
 import {clearingCart} from "../store/cart/action";
+import "../styles/cart.scss";
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -33,10 +33,10 @@ const Cart = () => {
                <h2 className="title">Корзина</h2>
                <div className="cart__games games">
                    {cartList.length ? cartList.map(game => (
-                       <Card key={game._id} game={game}/>
+                       <Card key={game._id} game={game} type="CART"/>
                    ))
                        :
-                       <div className="cart__text">Корзина пуста, но вы можете <Link to={"/"} style={{textDecoration: "none"}}>добавить сюда игры</Link></div>
+                       <div className="cart__text">Корзина пуста, но вы можете <Link to="/" style={{textDecoration: "none"}}>добавить сюда игры</Link></div>
                    }
                </div>
                {cartList.length && (

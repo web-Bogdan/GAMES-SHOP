@@ -23,7 +23,7 @@ const initialState: IInitialState = {
 export enum ACTIONS {
     LOG_IN = "LOG_IN",
     LOG_OUT = "LOG_OUT",
-    FETCH_USER = "FETCH_USER"
+    START_LOADING = "START_LOADING"
 }
 
 interface LOG_IN {
@@ -35,19 +35,19 @@ interface LOG_OUT {
     type: ACTIONS.LOG_OUT
 }
 
-interface FETCH_USER {
-    type: ACTIONS.FETCH_USER
+interface START_LOADING {
+    type: ACTIONS.START_LOADING
 }
 
-type TAction = LOG_IN | LOG_OUT | FETCH_USER;
+type TAction = LOG_IN | LOG_OUT | START_LOADING;
 
 const userReducer = (state = initialState, action: TAction) => {
     switch (action.type){
-        case "LOG_IN":
-            return {...state, user: action.payload, isAuth: true, isLoading: action.payload};
-        case "LOG_OUT":
-            return {...state, user: null, isAuth: false};
-        case "FETCH_USER":
+        case ACTIONS.LOG_IN:
+            return {...state, user: action.payload, isAuth: true, isLoading: false};
+        case ACTIONS.LOG_OUT:
+            return {...state, user: null, isAuth: false, isLoading: false};
+        case ACTIONS.START_LOADING:
             return {...state, isLoading: true};
         default:
             return state;

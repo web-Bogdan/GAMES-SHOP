@@ -12,6 +12,6 @@ export const UserApi = {
         const response = await $authHost.post("/email/login", body);
         return response;
     }
-}
+};
 
 

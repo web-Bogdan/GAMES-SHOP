@@ -6,4 +6,4 @@ export const GamesApi = {
        const response = await axios(GAMES_API_URL);
        return response;
    }
-}
+};

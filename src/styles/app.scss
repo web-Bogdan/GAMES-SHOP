@@ -133,7 +133,7 @@ body{
     width: 100%;
     white-space: nowrap;
     font-size: 23px;
-    font-weight: 500;
+    font-weight: 600;
     color: #312d2d;
   }
   .game__counting{
@@ -168,6 +168,9 @@ body{
   }
   .game__btn:hover .game__active{
     transform: scale(1);
+  }
+  .game__btn-active .game__active{
+    background-color: rgba(215, 71, 14, 0.75);
   }
   .game__active{
     position: absolute;

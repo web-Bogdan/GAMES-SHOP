@@ -11,14 +11,16 @@ export interface IGame {
 interface IInitialState {
     gamesList: IGame[] | [];
     hotGames: IGame[] | [];
-    isLoading: boolean;
+    gamesIsLoading: boolean;
+    isFirstLoading: boolean;
     error: string | null;
 }
 
 const initialState: IInitialState = {
     gamesList: [],
     hotGames: [],
-    isLoading: false,
+    gamesIsLoading: false,
+    isFirstLoading: true,
     error: null
 };
 
@@ -26,8 +28,8 @@ export enum ACTIONS {
     FETCHING_START = "START_LOADING",
     FETCH_SUCCESS = "FETCH_SUCCESS",
     FETCH_ERROR = "FETCH_ERROR",
-    INCREMENT_COUNT = "INCREMENT_COUNT",
-    DECREMENT_COUNT = "DECREMENT_COUNT"
+    INCREMENT_HOME_COUNT = "INCREMENT_HOME_COUNT",
+    DECREMENT_HOME_COUNT = "DECREMENT_HOME_COUNT"
 }
 
 export interface FETCHING_START {
@@ -44,17 +46,17 @@ export interface FETCH_ERROR {
     payload: string
 }
 
-export interface INCREMENT_COUNT {
-    type: ACTIONS.INCREMENT_COUNT,
+export interface INCREMENT_HOME_COUNT {
+    type: ACTIONS.INCREMENT_HOME_COUNT,
     payload: string
 }
 
-export interface DECREMENT_COUNT {
-    type: ACTIONS.DECREMENT_COUNT,
+export interface DECREMENT_HOME_COUNT {
+    type: ACTIONS.DECREMENT_HOME_COUNT,
     payload: string
 }
 
-type TAction = FETCHING_START | FETCH_SUCCESS | FETCH_ERROR | INCREMENT_COUNT | DECREMENT_COUNT;
+type TAction = FETCHING_START | FETCH_SUCCESS | FETCH_ERROR | INCREMENT_HOME_COUNT | DECREMENT_HOME_COUNT;
 
 const gamesReducer = (state= initialState, action: TAction) => {
     switch (action.type) {
@@ -62,10 +64,10 @@ const gamesReducer = (state= initialState, action: TAction) => {
             return {...state, isLoading: true};
         case ACTIONS.FETCH_SUCCESS:
             const hotGamesList = action.payload.filter(game => game.isHot);
-            return {...state, gamesList: action.payload, hotGames: hotGamesList, isLoading: false};
+            return {...state, gamesList: action.payload, hotGames: hotGamesList, gamesIsLoading: false, isFirstLoading: false};
         case ACTIONS.FETCH_ERROR:
             return {...state, error: action.payload};
-        case ACTIONS.INCREMENT_COUNT:
+        case ACTIONS.INCREMENT_HOME_COUNT:
             const incrementCount = state.gamesList.map(game => {
                 if (game._id === action.payload && game.count < 20){
                     game = {...game, count: game.count + 1, price: game.price + game.price / game.count};
@@ -73,7 +75,7 @@ const gamesReducer = (state= initialState, action: TAction) => {
                 return game;
             });
             return {...state, gamesList: incrementCount};
-        case ACTIONS.DECREMENT_COUNT:
+        case ACTIONS.DECREMENT_HOME_COUNT:
             const decrementCount = state.gamesList.map(game => {
                 if (game._id === action.payload){
                     game = {...game, count: game.count - 1, price: game.price - game.price / game.count};
