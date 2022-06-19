@@ -23,7 +23,7 @@ function App() {
               .then(response => dispatch(setUser(response.data)))
               .then(() => dispatch(setLoading(false)));
       }
-  }, []);
+  }, [dispatch]);
   return (
       <div className="app">
         <Routes>
