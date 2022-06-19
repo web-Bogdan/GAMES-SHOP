@@ -6,16 +6,16 @@ import {UserApi} from "../http/userApi";
 import {IAuthForm} from "./Registration";
 import {validationEmailName, validationPassword} from "../utils/validation/validation";
 import {useDispatch} from "react-redux";
-import {setUser, startLoading} from "../store/user/actions";
+import {setUser, setLoading} from "../store/user/actions";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const LogIn = () => {
     const {register, handleSubmit, formState: {errors}, setError} = useForm<IAuthForm>();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {isLoading} = useTypedSelector(state => state.userReducer);
+    const {userIsLoading} = useTypedSelector(state => state.userReducer);
     const onSubmit = async (data: IAuthForm) => {
-        dispatch(startLoading());
+        dispatch(setLoading(true));
         try {
             const response = await UserApi.logIn(data);
             const user = {
@@ -39,6 +39,8 @@ const LogIn = () => {
                     });
                 });
             }
+        } finally {
+            dispatch(setLoading(false));
         }
     };
     return (
@@ -49,7 +51,7 @@ const LogIn = () => {
                 <div className="auth__error">{errors?.email && errors?.email.message}</div>
                 <input className="auth__input" {...register("password", validationPassword)} type="password" placeholder="Пароль"/>
                 <div className="auth__error">{errors?.password && errors?.password.message}</div>
-                <div><button className="btn" type="submit" disabled={isLoading}>Войти</button></div>
+                <div><button className="btn" type="submit" disabled={userIsLoading}>Войти</button></div>
                 <p className="auth__text">Ещё нет аккаунта? <Link className="link" to="/registration">Нажмите сюда</Link></p>
             </form>
         </div>

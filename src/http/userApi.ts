@@ -11,7 +11,11 @@ export const UserApi = {
         const body = {email: String(data.email), password: String(data.password)};
         const response = await $authHost.post("/email/login", body);
         return response;
-    }
+    },
+    auth: async () => {
+        const response = await $authHost.get("/me");
+        return response;
+    },
 };
 
 

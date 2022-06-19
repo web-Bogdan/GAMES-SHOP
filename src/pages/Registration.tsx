@@ -11,6 +11,7 @@ import {
 } from "../utils/validation/validation";
 import {UserApi} from "../http/userApi";
 import {useTypedSelector} from "../hooks/useTypedSelector";
+import {setLoading} from "../store/user/actions";
 
 export interface IAuthForm {
     firstName: string,
@@ -21,7 +22,7 @@ export interface IAuthForm {
 
 const Registration: React.FC = () => {
     const {register, handleSubmit, formState: {errors}, setError} = useForm<IAuthForm>();
-    const {isLoading} = useTypedSelector(state => state.userReducer);
+    const {userIsLoading} = useTypedSelector(state => state.userReducer);
     const navigate = useNavigate();
     const onSubmit = async (data: IAuthForm) => {
         try {
@@ -52,7 +53,7 @@ const Registration: React.FC = () => {
                 <div className="auth__error">{errors?.email && errors?.email.message}</div>
                 <input className="auth__input" {...register("password", validationPassword)} type="password" placeholder="Пароль"/>
                 <div className="auth__error">{errors?.password && errors?.password.message}</div>
-                <div><button className="btn" disabled={isLoading}>Зарегистрироваться</button></div>
+                <div><button className="btn" disabled={userIsLoading}>Зарегистрироваться</button></div>
                 <p className="auth__text">Уже есть аккаунт? <Link className="link" to="/login">Нажмите сюда</Link></p>
             </form>
         </div>
