@@ -10,6 +10,7 @@ import {setError, setGames, startLoading} from "../store/games/actions";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import Loader from "../components/Loader";
 import "../styles/home.scss";
+import {GamesApi} from "../http/gamesApi";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         dispatch(startLoading());
         try {
-            axios(GAMES_API_URL)
+            GamesApi.loadingGames()
                 .then(response => dispatch(setGames(response.data)));
         } catch (e: any){
             dispatch(setError(e));

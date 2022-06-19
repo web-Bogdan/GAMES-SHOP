@@ -67,7 +67,7 @@ const gamesReducer = (state= initialState, action: TAction) => {
             return {...state, error: action.payload};
         case ACTIONS.INCREMENT_COUNT:
             const incrementCount = state.gamesList.map(game => {
-                if (game._id === action.payload){
+                if (game._id === action.payload && game.count < 20){
                     game = {...game, count: game.count + 1, price: game.price + game.price / game.count};
                 }
                 return game;

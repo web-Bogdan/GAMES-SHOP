@@ -10,9 +10,6 @@ import "../styles/app.scss";
 const Card: React.FC<any> = ({game}) => {
     const dispatch = useDispatch();
     const incrementCount = () => {
-        if (game.count >= 20){
-            return false;
-        }
         dispatch(increment(game._id));
     };
     const decrementCount = () => {
