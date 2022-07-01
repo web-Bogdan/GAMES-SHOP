@@ -22,6 +22,8 @@ function App() {
           UserApi.auth()
               .then(response => dispatch(setUser(response.data)))
               .then(() => dispatch(setLoading(false)));
+      } else {
+         dispatch(setLoading(false));
       }
   }, [dispatch]);
   return (

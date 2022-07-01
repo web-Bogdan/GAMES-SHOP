@@ -18,8 +18,7 @@ const Home = () => {
             dispatch(startLoading());
             try {
                 GamesApi.loadingGames()
-                    .then(response => dispatch(setGames(response.data)))
-                    .then(() => console.log(gamesIsLoading));
+                    .then(response => dispatch(setGames(response.data)));
             } catch (e: any){
                 dispatch(setError(e));
             }
