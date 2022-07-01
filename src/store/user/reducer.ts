@@ -17,7 +17,7 @@ interface IInitialState {
 const initialState: IInitialState = {
     user: null,
     isAuth: false,
-    userIsLoading: false
+    userIsLoading: true
 }
 
 export enum ACTIONS {
