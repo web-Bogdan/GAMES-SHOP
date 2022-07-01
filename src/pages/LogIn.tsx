@@ -6,7 +6,7 @@ import {UserApi} from "../http/userApi";
 import {IAuthForm} from "./Registration";
 import {validationEmailName, validationPassword} from "../utils/validation/validation";
 import {useDispatch} from "react-redux";
-import {setUser, setLoading} from "../store/user/actions";
+import {setUser, setLoading, logOut} from "../store/user/actions";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const LogIn = () => {
@@ -15,6 +15,7 @@ const LogIn = () => {
     const navigate = useNavigate();
     const {userIsLoading} = useTypedSelector(state => state.userReducer);
     const onSubmit = async (data: IAuthForm) => {
+        dispatch(logOut());
         dispatch(setLoading(true));
         try {
             const response = await UserApi.logIn(data);

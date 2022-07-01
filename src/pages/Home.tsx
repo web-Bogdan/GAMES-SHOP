@@ -15,10 +15,13 @@ const Home = () => {
     const {gamesList, gamesIsLoading, isFirstLoading} = useTypedSelector(state => state.gamesReducer);
     useEffect(() => {
         if (isFirstLoading){
+            console.log(gamesIsLoading);
             dispatch(startLoading());
+            console.log(gamesIsLoading);
             try {
                 GamesApi.loadingGames()
-                    .then(response => dispatch(setGames(response.data)));
+                    .then(response => dispatch(setGames(response.data)))
+                    .then(() => console.log(gamesIsLoading));
             } catch (e: any){
                 dispatch(setError(e));
             }

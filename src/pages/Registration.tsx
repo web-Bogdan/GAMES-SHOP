@@ -2,7 +2,6 @@ import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import "../styles/auth.scss";
-
 import {
     validationEmailName,
     validationFirstName,
@@ -11,7 +10,8 @@ import {
 } from "../utils/validation/validation";
 import {UserApi} from "../http/userApi";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import {setLoading} from "../store/user/actions";
+import {logOut, setLoading} from "../store/user/actions";
+import {useDispatch} from "react-redux";
 
 export interface IAuthForm {
     firstName: string,
@@ -23,9 +23,12 @@ export interface IAuthForm {
 const Registration: React.FC = () => {
     const {register, handleSubmit, formState: {errors}, setError} = useForm<IAuthForm>();
     const {userIsLoading} = useTypedSelector(state => state.userReducer);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const onSubmit = async (data: IAuthForm) => {
+        dispatch(logOut());
         try {
+            dispatch(setLoading(true));
             await UserApi.signIn(data);
             navigate("/login");
         }
@@ -39,6 +42,9 @@ const Registration: React.FC = () => {
                 });
             });
             }
+        }
+        finally {
+            dispatch(setLoading(false));
         }
     };
     return (
