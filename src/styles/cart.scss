@@ -20,6 +20,19 @@
   .cart__games .game__footer{
     justify-content: center;
   }
+  .cart__games .game__cross{
+    position: absolute;
+    right: 5px;
+    top: -25px;
+    display: block;
+    cursor: pointer;
+  }
+  .cart__games .game__cross:hover.game__cross *{
+    fill: $red;
+  }
+  .cart__games .game__cross *{
+    width: 30px;
+  }
   .cart__text{
     font-size: 24px;
     color: #c08f35;
@@ -34,7 +47,7 @@
     background-color: #7e2f2f;
     margin-right: 14px;
     &:hover{
-      background-color: #f82828;
+      background-color: $red;
     }
   }
 }

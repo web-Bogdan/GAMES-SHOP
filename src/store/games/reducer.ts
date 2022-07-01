@@ -61,7 +61,6 @@ type TAction = FETCHING_START | FETCH_SUCCESS | FETCH_ERROR | INCREMENT_HOME_COU
 const gamesReducer = (state= initialState, action: TAction) => {
     switch (action.type) {
         case ACTIONS.FETCHING_START:
-            console.log(321321)
             return {...state, gamesIsLoading: true};
         case ACTIONS.FETCH_SUCCESS:
             const hotGamesList = action.payload.filter(game => game.isHot);

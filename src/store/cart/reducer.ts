@@ -12,6 +12,7 @@ const initialState: IInitialState = {
 
 export enum ACTIONS {
     ADD_TO_CART = "ADD_TO_CART",
+    DELETE_ITEM = "DELETE_ITEM",
     INCREMENT_CART_COUNT = "INCREMENT_CART_COUNT",
     DECREMENT_CART_COUNT = "DECREMENT_CART_COUNT",
     CLEAR_CART = "CLEAR_CART"
@@ -20,6 +21,11 @@ export enum ACTIONS {
 interface ADD_TO_CART {
     type: ACTIONS.ADD_TO_CART;
     payload: IGame
+}
+
+interface DELETE_ITEM {
+    type: ACTIONS.DELETE_ITEM;
+    payload: string;
 }
 
 export interface INCREMENT_CART_COUNT {
@@ -36,7 +42,7 @@ interface CLEAR_CART {
     type: ACTIONS.CLEAR_CART
 }
 
-type TAction = ADD_TO_CART | INCREMENT_CART_COUNT | DECREMENT_CART_COUNT | CLEAR_CART;
+type TAction = ADD_TO_CART | INCREMENT_CART_COUNT | DECREMENT_CART_COUNT | CLEAR_CART | DELETE_ITEM;
 
 const cartReducer = (state = initialState, action: TAction) => {
     switch (action.type) {
@@ -54,6 +60,9 @@ const cartReducer = (state = initialState, action: TAction) => {
                 });
             }
             return {...state, cartList: newCartList}
+        case ACTIONS.DELETE_ITEM:
+            const filteredList = state.cartList.filter(item => item._id !== action.payload);
+            return {...state, cartList: filteredList};
         case ACTIONS.INCREMENT_CART_COUNT:
             const incrementCount = state.cartList.map(game => {
                 if (game._id === action.payload){

@@ -5,3 +5,4 @@ export const addToCart = (payload: IGame) => ({type: ACTIONS.ADD_TO_CART, payloa
 export const clearingCart = () => ({type: ACTIONS.CLEAR_CART});
 export const incrementCart = (payload: string) => ({type: ACTIONS.INCREMENT_CART_COUNT, payload});
 export const decrementCart = (payload: string) => ({type: ACTIONS.DECREMENT_CART_COUNT, payload});
+export const deleteItem = (payload: string) => ({type: ACTIONS.DELETE_ITEM, payload});

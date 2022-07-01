@@ -19,7 +19,6 @@ body{
 
 .container{
   max-width: 1170px;
-  padding: 0 15px;
   margin: 0 auto;
 }
 
@@ -115,6 +114,7 @@ body{
 .game{
   display: flex;
   background-color: $white;
+  position: relative;
   .game__left{
     width: 57%;
   }
@@ -183,6 +183,9 @@ body{
     top: -9px;
     border-radius: 50%;
   }
+  .game__cross{
+    display: none;
+  }
 }
 
 // Footer styles
@@ -193,7 +196,7 @@ body{
   margin-top: 40px;
   min-height: 90px;
   background-color: $green;
-  width: 100vw;
+  width: 100%;
   bottom: 0;
 }
 

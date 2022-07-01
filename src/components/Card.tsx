@@ -3,8 +3,9 @@ import {useDispatch} from "react-redux";
 import {ReactComponent as Minus} from "../assets/img/icons/minus.svg";
 import {ReactComponent as Plus} from "../assets/img/icons/plus.svg";
 import {ReactComponent as Buy} from "../assets/img/icons/cart.svg";
+import {ReactComponent as Cross} from "../assets/img/icons/cross.svg";
 import {decrementHome, incrementHome} from "../store/games/actions";
-import {addToCart, decrementCart, incrementCart} from "../store/cart/action";
+import {addToCart, decrementCart, deleteItem, incrementCart} from "../store/cart/action";
 import {IGame} from "../store/games/reducer";
 import "../styles/app.scss";
 
@@ -45,6 +46,9 @@ const Card: React.FC<ICard> = ({game, type}) => {
                 return null;
         }
     };
+    const deleteGame = (id: string) => {
+        dispatch(deleteItem(id));
+    }
     const addGame = () => {
         setIsActive(true);
         dispatch(addToCart(game));
@@ -72,6 +76,9 @@ const Card: React.FC<ICard> = ({game, type}) => {
                         <Buy className="game__btn"/>
                         <span className="game__active"></span>
                     </div>
+                </div>
+                <div className="game__cross">
+                    <Cross onClick={() => deleteGame(game._id)}/>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ import {setError, setGames, startLoading} from "../store/games/actions";
 import {GAMES_API_URL} from "../utils/consts/consts";
 import Footer from "../components/Footer";
 import {Link} from "react-router-dom";
-import {clearingCart} from "../store/cart/action";
+import {clearingCart, deleteItem} from "../store/cart/action";
 import "../styles/cart.scss";
 
 const Cart = () => {
